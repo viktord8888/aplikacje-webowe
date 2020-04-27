@@ -9,7 +9,7 @@ var FieldType;
 })(FieldType || (FieldType = {}));
 var InputField = /** @class */ (function () {
     function InputField(name) {
-        this.area = document.createElement('div');
+        this.area = document.createElement('p');
         this.element = document.createElement('input');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
@@ -27,9 +27,9 @@ var InputField = /** @class */ (function () {
 }());
 var TextAreaField = /** @class */ (function () {
     function TextAreaField(name) {
-        this.area = document.createElement('div');
+        this.area = document.createElement('p');
         this.element = document.createElement('textarea');
-        this.element.rows = 3;
+        this.element.rows = 4;
         this.element.cols = 40;
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
@@ -46,7 +46,7 @@ var TextAreaField = /** @class */ (function () {
 }());
 var DateField = /** @class */ (function () {
     function DateField(name) {
-        this.area = document.createElement('div');
+        this.area = document.createElement('p');
         this.element = document.createElement('input');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
@@ -64,7 +64,7 @@ var DateField = /** @class */ (function () {
 }());
 var EmailField = /** @class */ (function () {
     function EmailField(name) {
-        this.area = document.createElement('div');
+        this.area = document.createElement('p');
         this.element = document.createElement('input');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
@@ -82,7 +82,7 @@ var EmailField = /** @class */ (function () {
 }());
 var SelectField = /** @class */ (function () {
     function SelectField(name) {
-        this.area = document.createElement('div');
+        this.area = document.createElement('p');
         this.element = document.createElement('select');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
@@ -109,21 +109,16 @@ var SelectField = /** @class */ (function () {
         return this.area;
     };
     SelectField.prototype.getValue = function () {
-        if (this.element.value === this.option1.value) {
+        if (this.element.value === this.option1.value)
             return this.element.name + "Informatyka i Ekonometria";
-        }
-        else if (this.element.value === this.option2.value) {
+        else if (this.element.value === this.option2.value)
             return this.element.name + "Finanse i Rachunkowość";
-        }
-        else if (this.element.value === this.option3.value) {
+        else if (this.element.value === this.option3.value)
             return this.element.name + "Zarządzanie";
-        }
-        else if (this.element.value === this.option4.value) {
+        else if (this.element.value === this.option4.value)
             return this.element.name + "Inny";
-        }
-        else {
+        else
             return this.element.name + "Nie wybrano";
-        }
     };
     return SelectField;
 }());
@@ -141,12 +136,10 @@ var CheckboxField = /** @class */ (function () {
         return this.area;
     };
     CheckboxField.prototype.getValue = function () {
-        if (this.element.checked) {
+        if (this.element.checked)
             return this.element.name + "TAK";
-        }
-        else {
+        else
             return this.element.name + "NIE";
-        }
     };
     return CheckboxField;
 }());
@@ -184,7 +177,7 @@ var form = new Form('form');
 form.addField(new InputField("Imię: "));
 form.addField(new InputField("Nazwisko: "));
 form.addField(new EmailField("E-mail: "));
-form.addField(new DateField("Data: "));
+form.addField(new DateField("Data urodzenia: "));
 form.addField(new SelectField("Wybrany kierunek studiów: "));
 form.addField(new CheckboxField("Czy preferujesz e-learning: "));
 form.addField(new TextAreaField("Uwagi: "));
