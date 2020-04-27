@@ -28,12 +28,13 @@ var InputField = /** @class */ (function () {
 var TextAreaField = /** @class */ (function () {
     function TextAreaField(name) {
         this.area = document.createElement('div');
-        this.element = document.createElement('input');
+        this.element = document.createElement('textarea');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
         this.name = name;
         this.element.name = this.name;
         this.element.type = 'textArea';
+        this.cols = document.getElementById;
     }
     TextAreaField.prototype.render = function () {
         return this.area;

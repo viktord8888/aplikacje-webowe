@@ -46,16 +46,18 @@ class TextAreaField implements Field {
     area: any;
     cols: any;
     rows: any;
-    element: HTMLInputElement;
+    element: HTMLTextAreaElement;
 
     constructor(name: string) {
         this.area = document.createElement('div');
-        this.element = <HTMLInputElement>document.createElement('input');
+        this.element = <HTMLTextAreaElement>document.createElement('textarea');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element)
         this.name = name;
         this.element.name = this.name;
         this.element.type = 'textArea';
+        this.cols = document.getElementById
+        
     }
 
     render(): HTMLElement {
