@@ -1,11 +1,9 @@
 var FieldType;
 (function (FieldType) {
     FieldType[FieldType["textBox"] = 0] = "textBox";
-    FieldType[FieldType["textArea"] = 1] = "textArea";
-    FieldType[FieldType["date"] = 2] = "date";
-    FieldType[FieldType["email"] = 3] = "email";
-    FieldType[FieldType["select"] = 4] = "select";
-    FieldType[FieldType["checkbox"] = 5] = "checkbox";
+    FieldType[FieldType["date"] = 1] = "date";
+    FieldType[FieldType["email"] = 2] = "email";
+    FieldType[FieldType["checkbox"] = 3] = "checkbox";
 })(FieldType || (FieldType = {}));
 var InputField = /** @class */ (function () {
     function InputField(name) {

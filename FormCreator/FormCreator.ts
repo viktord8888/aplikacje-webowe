@@ -1,15 +1,12 @@
 enum FieldType {
     textBox,
-    textArea,
     date,
     email,
-    select,
     checkbox
 }
 
 interface Field {
     name: string;
-    type: FieldType;
     area: HTMLElement;
     render(): HTMLElement;
     getValue(): any;
@@ -42,7 +39,6 @@ class InputField implements Field {
 
 class TextAreaField implements Field {
     name: string;
-    type: FieldType;
     area: HTMLElement;
     cols: number;
     rows: number;
@@ -121,14 +117,12 @@ class EmailField implements Field {
 
 class SelectField implements Field {
     name: string;
-    type: FieldType;
     area: HTMLElement;
     option1: HTMLOptionElement;
     option2: HTMLOptionElement;
     option3: HTMLOptionElement;
     option4: HTMLOptionElement;
     element: HTMLSelectElement;
-
 
     constructor(name: string) {
         this.area = <HTMLElement>document.createElement('p');
