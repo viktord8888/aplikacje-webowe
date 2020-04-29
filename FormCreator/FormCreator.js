@@ -79,7 +79,7 @@ var EmailField = /** @class */ (function () {
     return EmailField;
 }());
 var SelectField = /** @class */ (function () {
-    function SelectField(name) {
+    function SelectField(name, option1Name, option2Name, option3Name, option4Name) {
         this.area = document.createElement('p');
         this.element = document.createElement('select');
         this.area.appendChild(document.createTextNode(name));
@@ -88,18 +88,22 @@ var SelectField = /** @class */ (function () {
         this.option2 = document.createElement('option');
         this.option3 = document.createElement('option');
         this.option4 = document.createElement('option');
-        this.option1.appendChild(document.createTextNode("Informatyka i Ekonometria"));
-        this.option2.appendChild(document.createTextNode("Finanse i Rachunkowość"));
-        this.option3.appendChild(document.createTextNode("Zarządzanie"));
-        this.option4.appendChild(document.createTextNode("Inny"));
-        this.option1.value = "Informatyka i Ekonometria";
-        this.option2.value = "Finanse i Rachunkowość";
-        this.option3.value = "Zarządzanie";
-        this.option4.value = "Inny";
+        this.option1.appendChild(document.createTextNode(option1Name));
+        this.option2.appendChild(document.createTextNode(option2Name));
+        this.option3.appendChild(document.createTextNode(option3Name));
+        this.option4.appendChild(document.createTextNode(option4Name));
         this.element.appendChild(this.option1);
         this.element.appendChild(this.option2);
         this.element.appendChild(this.option3);
         this.element.appendChild(this.option4);
+        this.option1Name = option1Name;
+        this.option2Name = option2Name;
+        this.option3Name = option3Name;
+        this.option4Name = option4Name;
+        this.option1.value = this.option1Name;
+        this.option2.value = this.option2Name;
+        this.option3.value = this.option3Name;
+        this.option4.value = this.option4Name;
         this.name = name;
         this.element.name = this.name;
     }
@@ -176,7 +180,7 @@ form.addField(new InputField("Imię: "));
 form.addField(new InputField("Nazwisko: "));
 form.addField(new EmailField("E-mail: "));
 form.addField(new DateField("Data urodzenia: "));
-form.addField(new SelectField("Wybrany kierunek studiów: "));
+form.addField(new SelectField("Wybrany kierunek studiów: ", "Informatyka i Ekonometria", "Finanse i Rachunkowość", "Zarządzanie", "Inny"));
 form.addField(new CheckboxField("Czy preferujesz e-learning: "));
 form.addField(new TextAreaField("Uwagi: "));
 var app = new App(form);
