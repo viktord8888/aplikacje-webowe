@@ -32,4 +32,4 @@ let submitButton = <HTMLElement>document.getElementById('submit');
 submitButton.addEventListener('click', ()=>form.getValue(), false);
 
 let saveButton = <HTMLElement>document.getElementById('save');
-saveButton.addEventListener('click', ()=>form.getValue(), false);
+saveButton.addEventListener('click', ()=>form.renderTable(), false);
