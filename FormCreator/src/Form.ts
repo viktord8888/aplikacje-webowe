@@ -15,11 +15,6 @@ export class Form {
     addField(field: Field): void {
         this.fields.push(field);
     }
-    renderTable(): void {
-        this.fields.forEach(table => {
-            this.formElement.appendChild(table.render());
-        });
-    }
     getValue(): void {
         this.fields.forEach(element => {
             console.log(element.getValue());
