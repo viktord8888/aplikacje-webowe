@@ -6,6 +6,8 @@ import { SelectField } from './SelectField';
 import { CheckboxField } from './CheckboxField';
 import { TextAreaField } from './TextAreaField';
 
+import './styles/styles.scss';
+
 class App {
     form: Form;
     constructor(form: Form) {

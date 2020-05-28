@@ -6,14 +6,32 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid blue;
+            }
+        </style>
+    </head>
+
     <link rel="stylesheet" href="./main.css">
     <body>
         <div id="form"></div>
         
         <button id="submit">Submit</button>
 
+        <button id="delete">Delete</button>
+
+        <button id="send">Send</button>
+
         <table id="table" class="center"></table>
         
         <script src="./bundle.js"></script>
+
+        <script src="./client.js"></script>
    </body>
 </html>

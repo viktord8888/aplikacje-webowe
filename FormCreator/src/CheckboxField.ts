@@ -15,42 +15,45 @@ export class CheckboxField implements Field {
         this.element.type = 'checkbox';
     }
     render(): HTMLElement {
-        return this.area;
+        return this.createTable() && this.area;
     }
 
-    getValue(): any {
+    createTable() {
         let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
-        let element: HTMLElement = <HTMLElement> document.createElement('tr');
         let elementName: HTMLElement = <HTMLElement> document.createElement('th');
-        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
+        elementName.setAttribute('id', 'elementName');
 
         elementName.innerHTML = this.element.name;
+
+        table.appendChild(elementName);
+
+        return table;
+    }
+
+    deleteFromTable() {
+        let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
+        let elementName: HTMLElement = <HTMLElement> document.getElementById('elementName');
+        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
         
-        if(this.element.checked)
+        table.appendChild(elementName);
+        elementName.appendChild(elementValue);
+
+        elementValue.innerHTML = "";
+    }
+    
+    getValue(): any {
+        let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
+        let elementName: HTMLElement = <HTMLElement> document.getElementById('elementName');
+        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
+        
+        table.appendChild(elementName);
+        elementName.appendChild(elementValue);
+
+        if (this.element.checked)
             elementValue.innerHTML = "TAK";
         else
             elementValue.innerHTML = "NIE"
 
-        table.appendChild(element)
-        element.appendChild(elementName);
-        element.appendChild(elementValue);
-
-        let deleteButton: HTMLElement = <HTMLElement> document.createElement('button');
-        deleteButton.innerHTML = "X";
-        deleteButton.addEventListener('click', ()=> elementValue.innerHTML = "");
-
-        element.appendChild(deleteButton);
-
-        if(this.element.checked)
-            localStorage.setItem(this.element.name, "TAK");
-        else
-            localStorage.setItem(this.element.name, "NIE");
-
-        JSON.stringify(localStorage);
-
-        if (this.element.checked)
-            return this.element.name + "TAK";
-        else
-            return this.element.name + "NIE";
+        return this.element.name + this.element.value;
     }
 }

@@ -14,30 +14,43 @@ export class TextAreaField implements Field {
         this.name = name;
         this.element.name = this.name;
     }
+    
     render(): HTMLElement {
-        return this.area;
+        return this.createTable() && this.area;
     }
-    getValue(): any {
+    
+    createTable() {
         let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
-        let element: HTMLElement = <HTMLElement> document.createElement('tr');
         let elementName: HTMLElement = <HTMLElement> document.createElement('th');
-        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
+        elementName.setAttribute('id', 'elementName');
 
         elementName.innerHTML = this.element.name;
+
+        table.appendChild(elementName);
+
+        return table;
+    }
+
+    deleteFromTable() {
+        let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
+        let elementName: HTMLElement = <HTMLElement> document.getElementById('elementName');
+        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
+        
+        table.appendChild(elementName);
+        elementName.appendChild(elementValue);
+
+        elementValue.innerHTML = "";
+    }
+    
+    getValue(): any {
+        let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
+        let elementName: HTMLElement = <HTMLElement> document.getElementById('elementName');
+        let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
+        
+        table.appendChild(elementName);
+        elementName.appendChild(elementValue);
+
         elementValue.innerHTML = this.element.value;
-
-        table.appendChild(element)
-        element.appendChild(elementName);
-        element.appendChild(elementValue);
-
-        let deleteButton: HTMLElement = <HTMLElement> document.createElement('button');
-        deleteButton.innerHTML = "X";
-        deleteButton.addEventListener('click', ()=> elementValue.innerHTML = "");
-
-        element.appendChild(deleteButton);
-
-        localStorage.setItem(this.element.name, this.element.value);
-        JSON.stringify(localStorage);
 
         return this.element.name + this.element.value;
     }
