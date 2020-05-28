@@ -32,3 +32,6 @@ app.createForm();
 
 let submitButton = <HTMLElement>document.getElementById('submit');
 submitButton.addEventListener('click', ()=>form.getValue(), false);
+
+let deleteButton = <HTMLElement>document.getElementById('delete');
+deleteButton.addEventListener('click', ()=>form.deleteFromTable(), false);
