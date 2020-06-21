@@ -4,7 +4,7 @@ export class ExtendedSelectField implements Field {
     name: string;
     area: HTMLElement;
     element: HTMLSelectElement;
-    constructor(name: string, optionName: string[], site: any) {
+    constructor(name: string, optionName: string[]) {
         this.area = <HTMLElement>document.createElement('p');
         this.element = <HTMLSelectElement>document.createElement('select');
         this.area.appendChild(document.createTextNode(name));

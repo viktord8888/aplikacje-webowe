@@ -24,7 +24,7 @@ form.addField(new InputField("Imię: "));
 form.addField(new InputField("Nazwisko: "));
 form.addField(new EmailField("E-mail: "));
 form.addField(new DateField("Data urodzenia: "));
-form.addField(new ExtendedSelectField("Kraj pochodzenia: ", [], 'https://restcountries.eu/rest/v2/all'))
+form.addField(new ExtendedSelectField("Kraj pochodzenia: ", ['https://restcountries.eu/rest/v2/all']))
 form.addField(new SelectField("Wybrany kierunek studiów: ", ["Informatyka i Ekonometria", "Finanse i Rachunkowość", "Zarządzanie", "Inny"]));
 form.addField(new CheckboxField("Czy preferujesz e-learning: "));
 form.addField(new TextAreaField("Uwagi: "));
