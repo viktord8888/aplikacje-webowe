@@ -17,19 +17,7 @@ export class Form {
     }
     getValue(): void {
         this.fields.forEach(element => {
-            // name = element.name
-            // value = element.getValue
             console.log(element.getValue());
         });
     }
-    deleteFromTable(): void {
-
-    }
 }
-
-
-// clss FieldValue {
-//     name 
-// } - name, IDBCursorWithValue
-// class FormValue - FieldValue[]
-// class Values- FormValues[]

@@ -34,18 +34,16 @@ export class SelectField implements Field {
 
         return table;
     }
-
-    deleteFromTable() {
-        
-    }
     
     getValue(): any {
         let table: HTMLTableElement = <HTMLTableElement> document.getElementById('table');
+        let base: HTMLElement = <HTMLElement> document.createElement('tr');
         let elementName: HTMLElement = <HTMLElement> document.getElementById('elementName');
         let elementValue: HTMLElement = <HTMLElement> document.createElement('td');
         
         table.appendChild(elementName);
-        elementName.appendChild(elementValue);
+        elementName.appendChild(base);
+        base.appendChild(elementValue);
 
         elementValue.innerHTML = this.element.value;
 

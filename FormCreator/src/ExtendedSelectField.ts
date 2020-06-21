@@ -1,19 +1,26 @@
 import { Field } from "./Field";
 
-export class DateField implements Field {
+export class ExtendedSelectField implements Field {
     name: string;
     area: HTMLElement;
-    element: HTMLInputElement;
-    constructor(name: string) {
+    element: HTMLSelectElement;
+    constructor(name: string, optionName: string[], site: any) {
         this.area = <HTMLElement>document.createElement('p');
-        this.element = <HTMLInputElement>document.createElement('input');
+        this.element = <HTMLSelectElement>document.createElement('select');
         this.area.appendChild(document.createTextNode(name));
         this.area.appendChild(this.element);
         this.name = name;
         this.element.name = this.name;
-        this.element.type = 'date';
+        this.fetchOptions<{name: string}>("https://restcountries.eu/rest/v2/all").then((data) => {
+            data.map(x=>x.name).forEach(element => {
+                let option = <HTMLOptionElement>document.createElement("option");
+                option.text = element;
+                option.value = element;
+                this.element.options.add(option);
+            })
+        });
     }
-    
+
     render(): HTMLElement {
         return this.createTable() && this.area;
     }
@@ -43,5 +50,16 @@ export class DateField implements Field {
         elementValue.innerHTML = this.element.value;
 
         return this.element.name + this.element.value;
+    }
+
+    fetchOptions<T>(url: string): Promise<T[]> {
+        return fetch(url)
+        .then(res => res.json())
+        .then(res => { 
+            return res;
+        })
+        .catch((e) => {
+          console.log("API errore fetching ");
+        });
     }
 }

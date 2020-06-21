@@ -5,6 +5,7 @@ import { DateField } from './DateField';
 import { SelectField } from './SelectField';
 import { CheckboxField } from './CheckboxField';
 import { TextAreaField } from './TextAreaField';
+import { ExtendedSelectField } from './ExtendedSelectField';
 
 import './styles/styles.scss';
 
@@ -23,6 +24,7 @@ form.addField(new InputField("Imię: "));
 form.addField(new InputField("Nazwisko: "));
 form.addField(new EmailField("E-mail: "));
 form.addField(new DateField("Data urodzenia: "));
+form.addField(new ExtendedSelectField("Kraj pochodzenia: ", [], 'https://restcountries.eu/rest/v2/all'))
 form.addField(new SelectField("Wybrany kierunek studiów: ", ["Informatyka i Ekonometria", "Finanse i Rachunkowość", "Zarządzanie", "Inny"]));
 form.addField(new CheckboxField("Czy preferujesz e-learning: "));
 form.addField(new TextAreaField("Uwagi: "));
@@ -32,6 +34,3 @@ app.createForm();
 
 let submitButton = <HTMLElement>document.getElementById('submit');
 submitButton.addEventListener('click', ()=>form.getValue(), false);
-
-let deleteButton = <HTMLElement>document.getElementById('delete');
-deleteButton.addEventListener('click', ()=>form.deleteFromTable(), false);
